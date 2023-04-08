@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!--getInstance라는 말이 없어도 기본이 싱글톤이라는 것을 알 수 있음  -->
+	<!--scope: prototype, request, session, singleton  -->
+	<!--샘플03  -->
+	<!-- 샘플04 -->
+	
+	
+	<context:component-scan base-package="sample03"></context:component-scan>  <!--이걸 알려줘야 기존에 sample03지웟던 그 부분을 대체해야 수행하는거  -->
+	<context:component-scan base-package="sample04"></context:component-scan>
+	
+	<!--샘플05  -->
+	<context:component-scan base-package="sample05"></context:component-scan>
+	
+	
+</beans> 
