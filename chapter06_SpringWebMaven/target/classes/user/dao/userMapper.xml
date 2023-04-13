@@ -11,8 +11,13 @@
 	
 		
  <!--  만약 UserDTO의 필드명과 오라클 컬럼명이 틀린 경우   -->
-	<select id="getUserList" resultType="user.bean.UserDTO"> 
-		select * from usertable
+	<select id="getUserList" parameterType="java.util.Map" resultType="user.bean.UserDTO"> 
+		<![CDATA[
+		select * from 
+		(select rownum rn, tt.*from 
+		(select * from usertable) tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+		]]>
 	</select> 
 	
 	<!--update를 하기 위해 쓴 코드  이름이 같기 때문에 같은 이름을 찾아서 매핑한 그 코드 씀  -->
@@ -20,7 +25,7 @@
 		select * from usertable where id=#{id}
 	</select>
 	
-	<update id="update" parameterType="java.util.Map"> <!--xml에서는 자료형을 필요로 한다  -->
+	<update id="update" parameterType="user"> <!--xml에서는 자료형을 필요로 한다  -->
 		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
 		</update>
 		
@@ -62,5 +67,12 @@
 			
 		
 	</select>
+	
+	
+	<!-- 총 글 수   -->
+	<select id="getTotalA" resultType="int">
+		select count(*) from usertable
+	</select>
+	
 </mapper>
 

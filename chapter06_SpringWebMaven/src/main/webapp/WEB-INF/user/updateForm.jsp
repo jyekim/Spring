@@ -44,7 +44,8 @@
 		<tr>
 			<td colspan="2" align="center">
 				<input type="button" value="회원정보수정" id="updateBtn">
-				<input type="reset" value="취소">
+				<input type="reset" value="취소" id="resetBtn">
+				
 			</td>
 		</tr>
 	</table>

@@ -8,6 +8,7 @@
 	<!--  <bean id="userServiceImpl" class="user.service.UserServiceImpl"></bean>  어노테이션 안 쓰고 싶을때 이걸로 빈설정-->
 	<context:component-scan base-package="user.dao"></context:component-scan>
 	<context:component-scan base-package="user.service"></context:component-scan>
+	<context:component-scan base-package="user.bean"></context:component-scan>
 	
 	
 	<context:component-scan base-package="spring.conf"></context:component-scan>

@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
@@ -14,7 +15,17 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- Namespaces에서 p를 추가해주면 됨  -->
+	<!-- <bean id="multipartResolver" 
+       class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+       p:maxUploadSize="5000000" /> -->
 	
+	
+	<bean id="multipartResolver" 
+       class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      	<property name="maxUploadSize" value="5000000" />  <!-- 5MB --> 
+       </bean>
+      	
 	<context:component-scan base-package="main.controller" />
 	<context:component-scan base-package="user.controller" />
 	
@@ -22,4 +33,5 @@
 	<mvc:annotation-driven />
 	<mvc:resources location="/WEB-INF/img/" mapping="/img/**"  />
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"  />
+	<mvc:resources location="/WEB-INF/storage/" mapping="/storage/**"  />
 </beans>

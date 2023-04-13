@@ -67,10 +67,19 @@ public class SpringConfiguration { //이 파일은 일반자바 파일이 아니
 }
 
 /*
- * <context:property-placeholder location="classpath:spring/db.properties" />
- * <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
- * <property name="driverClassName" value="${jdbc.driver}"></property> <property
- * name="url" value="${jdbc.url}" /> <property name="username"
- * value="${jdbc.username}" /> <property name="password"
- * value="${jdbc.password}" /> </bean>
- */
+만약에 mapper.xml이 여러개인 경우 
+
+1.
+sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("user/dao/userMapper.xml"),
+										(new ClassPathResource("member/dao/memberMapper.xml"),
+										(new ClassPathResource("board/dao/boardMapper.xml"),
+										...);
+이런식으로 지정해주면 됨 
+
+
+2.
+Field에다가 autowired를 걸어주면서
+@Autowired
+private ApplicationContext context; 
+*/
+//sqlSessionFactoryBean.setMapperLocations(context.getResources("classpath:*/dao/*Mapper.xml"));
